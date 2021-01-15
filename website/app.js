@@ -2,7 +2,7 @@
 let defualtCountry = 'US';
 let lang = '&lang=ar';
 let baseURL = `https://api.openweathermap.org/data/2.5/weather?zip=`;
-let apiKey = `&appid=dc8c737815563e4edfc5a2033ef415de`;
+const apiKey = `&appid=dc8c737815563e4edfc5a2033ef415de&units=imperial`;
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
@@ -56,7 +56,7 @@ function performQuery(e) {
             }
 
 
-            getWeather(baseURL, `${zipCode},${defualtCountry}`, `${apiKey}${lang}`,)
+            getWeather(baseURL, `${zipCode},${defualtCountry}`, apiKey,)
                 .then(function (data) {
                     postData('/add', {
                         temp: data.main.temp,
